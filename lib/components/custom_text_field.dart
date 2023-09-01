@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -23,10 +24,10 @@ class CustomTextField extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         controller: titleController,
         textInputAction: TextInputAction.done,
-        decoration: const InputDecoration(
-          hintText: "Start typing here...",
-          hintStyle: TextStyle(fontSize: 22, color: Colors.white),
-          contentPadding: EdgeInsets.only(
+        decoration: InputDecoration(
+          hintText: "startType".tr(),
+          hintStyle: const TextStyle(fontSize: 22, color: Colors.white),
+          contentPadding: const EdgeInsets.only(
             left: 20,
             bottom: 10,
             top: 10,

@@ -1,13 +1,18 @@
 import 'dart:async';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:learn_storage/components/animated_container.dart';
+import 'package:learn_storage/components/custom_conatiner.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../components/get_deadline_widget.dart';
 import '../../components/todo_options.dart';
 import '../../core/service_locator.dart';
 import '../../domain/models/todo_model.dart';
 import '../../domain/repository/todo_repository.dart';
 import 'detail_page.dart';
-
 
 class HomePage extends StatefulWidget {
   final TodoRepository repository;
@@ -20,6 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Todo> todos = [];
+  bool _isTapped = false;
 
   @override
   void initState() {
@@ -54,16 +60,33 @@ class _HomePageState extends State<HomePage> {
         onPressed: navigateToDetailPage,
         child: const Icon(Icons.add),
       ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 28.0),
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              toolbarHeight: 250,
+              toolbarHeight: 200,
               flexibleSpace: Center(
                 child: FlexibleSpaceBar(
-                  title: Lottie.asset('assets/lotties/todo_animation.json'),
+                  title: Lottie.asset('assets/lotties/todo_animation.json',
+                      repeat: false),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 38.0,
+                  horizontal: 8.0,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    _isTapped = !_isTapped;
+                    setState(() {});
+                  },
+                  child: _isTapped == true
+                      ? const CustomAnimatedContainer().animate().slideX()
+                      : const CustomContainer(),
                 ),
               ),
             ),
@@ -72,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 17,
                 crossAxisSpacing: 2,
-                childAspectRatio: 1.45 / 2,
+                childAspectRatio: 1.35 / 2,
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
@@ -99,12 +122,12 @@ class _HomePageState extends State<HomePage> {
                       footer: todo.isCompleted == false
                           ? getDeadlineText(todo)
                           : Center(
-                        heightFactor: 5,
-                        child: Text(
-                          'Task Completed',
-                          style: Theme.of(context).textTheme.labelLarge,
-                        ),
-                      ),
+                              heightFactor: 5,
+                              child: Text(
+                                'completed',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ).tr(),
+                            ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: Container(
@@ -112,7 +135,8 @@ class _HomePageState extends State<HomePage> {
                             border: Border.all(color: Colors.deepPurpleAccent),
                             color: todo.isCompleted == false
                                 ? Colors.deepPurple.shade50
-                                : Colors.deepPurpleAccent.shade100.withOpacity(0.5),
+                                : Colors.deepPurpleAccent.shade100
+                                    .withOpacity(0.5),
                             borderRadius: const BorderRadius.all(
                               Radius.circular(17),
                             ),
@@ -123,30 +147,33 @@ class _HomePageState extends State<HomePage> {
                               horizontal: 8,
                             ),
                             child: todo.isCompleted == false
-                                ? Text("\nTITLE: \n\n${todo.title}")
+                                ? Text("\n${'title'.tr()}: \n\n${todo.title}")
                                 : RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: "\nTITLE",
-                                      style: Theme.of(context).textTheme.bodyLarge),
-                                  TextSpan(
-                                    text: "\n\n${todo.title}",
-                                    style: const TextStyle(
-                                      decoration: TextDecoration.lineThrough,
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: "\n${'title'.tr()}",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
+                                        TextSpan(
+                                          text: "\n\n${todo.title}",
+                                          style: const TextStyle(
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                            fontSize: 16,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
+                                  ),
                           ),
                         ),
                       ),
                     ),
-                    // child: TodoGridTile(todo: todo),
                   );
                 },
                 childCount: todos.length,

@@ -19,26 +19,16 @@ dependencies:
   #Shared Preference
   shared_preferences: ^2.2.0
 
-  #Http
-  http: ^1.1.0
-
-  #Json Annotation
-  json_annotation: ^4.8.1
-
-  #Freezed
-  freezed: ^2.4.1
-
-  #Freezed Annotation
-  freezed_annotation: ^2.4.1
-
   #Lottie
-  lottie: ^2.5.0
+  lottie: ^2.6.0
 
   #Date Time
   date_time: ^0.10.0
 
   #Intl
   intl: ^0.18.1
+  easy_localization: ^3.0.3
+  flutter_animate: ^4.2.0+1
 
 dev_dependencies:
   flutter_test:
@@ -50,8 +40,6 @@ dev_dependencies:
   #Build Runner
   build_runner: ^2.4.6
 
-  #Json Serializable
-  json_serializable: ^6.7.1
 
 
 flutter:
@@ -61,5 +49,6 @@ flutter:
   assets:
     - assets/images/
     - assets/lotties/
+    - assets/languages/
 
 

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_storage/domain/repository/todo_repository.dart';
 
@@ -24,13 +25,13 @@ void showTodoOptions(Todo todo, BuildContext context, TodoRepository repository,
               ),
             ),
             child: const Text(
-              'Do you really want to delete this to-do?',
+              'dialogCreated',
               style: TextStyle(
                 fontSize: 17,
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
               ),
-            ),
+            ).tr(),
           ),
         ),
         actions: [
@@ -47,12 +48,12 @@ void showTodoOptions(Todo todo, BuildContext context, TodoRepository repository,
                   Navigator.pop(context);
                 },
                 child: const Text(
-                  'YES',
+                  'yes',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
                   ),
-                ),
+                ).tr(),
               ),
               TextButton(
                 style: TextButton.styleFrom(
@@ -63,12 +64,12 @@ void showTodoOptions(Todo todo, BuildContext context, TodoRepository repository,
                   Navigator.pop(context);
                 },
                 child: const Text(
-                  'NO',
+                  'no',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
                   ),
-                ),
+                ).tr(),
               ),
             ],
           ),

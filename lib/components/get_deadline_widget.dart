@@ -1,14 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 import '../domain/models/todo_model.dart';
 
 
 Widget getDeadlineText(Todo todo) {
   if (todo.deadline == null) {
-    return const Padding(
-      padding: EdgeInsets.only(bottom: 40),
-      child: Center(child: Text('No Deadline')),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 40),
+      child: Center(child: const Text('noDeadline').tr()),
     );
   } else {
     final deadlineDate = todo.deadline!;
@@ -35,9 +34,9 @@ Widget getDeadlineText(Todo todo) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            const Text(
-              'Deadline:',
-              style: TextStyle(
+             Text(
+              '${'deadline'.tr()}:',
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
@@ -45,7 +44,7 @@ Widget getDeadlineText(Todo todo) {
             ),
             const SizedBox(height: 10),
             Text(
-              'Date: $formattedDeadline,\nDays: $daysLeft days left',
+              '${'date'.tr()} $formattedDeadline,\n${'days'.tr()} $daysLeft ${'daysLeft'.tr()}',
               style: const TextStyle(
                 fontSize: 15,
                 color: Colors.white,

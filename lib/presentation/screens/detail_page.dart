@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:learn_storage/components/custom_text_field.dart';
 import 'package:learn_storage/domain/repository/todo_repository.dart';
 
@@ -65,7 +65,7 @@ class _DetailPageState extends State<DetailPage> {
         child: const Icon(Icons.save_rounded),
       ),
       appBar: AppBar(
-        title: const Text('ADD TODOS'),
+        title: const Text('addTodo').tr(),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -88,8 +88,8 @@ class _DetailPageState extends State<DetailPage> {
                   onPressed: pickDeadline,
                   child: Text(
                     selectedDeadline != null
-                        ? 'Deadline: ${DateFormat.yMMMMd().format(selectedDeadline!)}'
-                        : 'Set Deadline',
+                        ? '${'Deadline'.tr()}: ${DateFormat.yMMMMd().format(selectedDeadline!)}'
+                        : 'setDeadline'.tr(),
                     style: const TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ),

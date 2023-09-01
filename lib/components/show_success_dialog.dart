@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,15 +21,15 @@ void showSuccessDialog(BuildContext context) {
                 ),
               ),
               const SizedBox(height: 10),
-              const Center(
-                child: Text(
-                  "Created Successfully",
+               Center(
+                child: const Text(
+                  "createdSuccessfully",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                     fontWeight: FontWeight.w500,
                   ),
-                ),
+                ).tr(),
               ),
               const SizedBox(height: 30),
               Center(
@@ -41,12 +42,11 @@ void showSuccessDialog(BuildContext context) {
                     fixedSize: const Size(210, 45),
                   ),
                   child: const Text(
-                    "Done",
+                    "done",
                     style: TextStyle(
                       color: Colors.white,
-                      fontFamily: "Nunito",
                     ),
-                  ),
+                  ).tr(),
                 ),
               ),
             ],
