@@ -44,9 +44,10 @@ class _DetailPageState extends State<DetailPage> {
           title: title,
           description: '',
           deadline: selectedDeadline,
+          isCompleted: false,
         );
 
-        // Storing the new todo
+        // Storing new todos
         widget.repository.storeTodo(newTodo);
 
         Navigator.pop(context, true);

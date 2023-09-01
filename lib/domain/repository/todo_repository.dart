@@ -10,4 +10,6 @@ abstract class TodoRepository {
   Future<bool> clearCache();
 
   Future<void> updateTodo(Todo todo);
+
+  Future<void> completedTodo(Todo todo);
 }

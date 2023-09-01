@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:learn_storage/domain/repository/todo_repository.dart';
 
 import '../../data/local_data_source.dart';
@@ -69,5 +68,23 @@ class TodoRepositoryImpl implements TodoRepository {
     final json = todos.map((todo) => todo.toJson()).toList();
     final data = jsonEncode(json);
     await dataSource.store(StorageKey.todos, data);
+  }
+
+
+  @override
+  Future<void> completedTodo(Todo todo) async{
+    todo.isCompleted = !todo.isCompleted;
+    final List<Todo> todos = readTodo();
+
+    int index = todos.indexWhere((element) => element.id == todo.id);
+
+    if (index != -1) {
+      todos[index] = todo;
+
+      final json = todos.map((todo) => todo.toJson()).toList();
+      final data = jsonEncode(json);
+      await dataSource.store(StorageKey.todos, data);
+    }
+
   }
 }

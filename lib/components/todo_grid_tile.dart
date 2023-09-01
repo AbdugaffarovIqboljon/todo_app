@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learn_storage/core/service_locator.dart';
+import 'package:learn_storage/domain/repository/todo_repository_impl.dart';
 
 import '../domain/models/todo_model.dart';
 import 'get_deadline_widget.dart';
@@ -21,9 +23,9 @@ class _TodoGridTileState extends State<TodoGridTile> {
       header: Align(
         alignment: const Alignment(0.85, -2.7),
         child: Checkbox(
-          value: isCompleted,
-          onChanged: (value) {
-            setState(() => isCompleted = !isCompleted);
+          value: widget.todo.isCompleted,
+          onChanged: (bool? value) {
+            repository.completedTodo(widget.todo);
           },
         ),
       ),
