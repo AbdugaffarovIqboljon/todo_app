@@ -1,0 +1,18 @@
+{
+  "title": "Sarlavha",
+  "deadline": "Tugatish Muddati",
+  "date": "Sana: ",
+  "days": "Kun: ",
+  "daysLeft": "kun qoldi",
+  "completed": "Vazifa tugallandi",
+  "addTodo": "Vazifa qo'shish",
+  "startType": "Bu yerga yozishni boshlang...",
+  "setDeadline": "Muddat belgilang",
+  "createdSuccessfully": "Muvaffaqiyatli yaratildi",
+  "done": "Bajarildi",
+  "noDeadline": "Muddat belgilanmagan",
+  "languages" : "Tillar",
+  "dialogCreated" : "Haqiqatan ham bu vazifani oʻchirib tashlamoqchimisiz?",
+  "yes" : "Ha",
+  "no" : "Yo'q"
+}

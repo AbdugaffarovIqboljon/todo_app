@@ -1,0 +1,18 @@
+{
+  "title": "TITLE",
+  "deadline": "Deadline",
+  "date": "Date: ",
+  "days": "Days: ",
+  "daysLeft": "days left",
+  "completed": "Task Completed",
+  "addTodo": "ADD TODOS",
+  "startType": "Start typing here...",
+  "setDeadline": "Set Deadline",
+  "createdSuccessfully": "Created Successfully",
+  "done": "Done",
+  "noDeadline": "No Deadline",
+  "languages" : "Languages",
+   "dialogCreated" : "Do you really want to delete this to-do?",
+  "yes" : "YES",
+  "no" : "NO"
+}
